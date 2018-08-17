@@ -2,6 +2,8 @@
 #include <malloc.h>
 #include "prepare_data.h"
 #include "hga.h"
+#include "pga.h"
+#include "tools.h"
 
 int datas = 20;
 int flowchart_size = 15;
@@ -14,8 +16,8 @@ int print_travers = 0;
 int print_simulation = 0;
 
 int main(int argc, char * argv[]) {
-    //    flowchart_size = strtol(argv[1], NULL, 10);
-    //    swarm_size = strtol(argv[2], NULL, 10);
+//        flowchart_size = strtol(argv[1], NULL, 10);
+//        swarm_size = strtol(argv[2], NULL, 10);
 
     flowchart_size = 10;
     swarm_size = 1000;
@@ -36,8 +38,14 @@ int main(int argc, char * argv[]) {
         hga_process(flowchartGroup, machineGroup, i);
 
         printf("pga (%d, %d, %d)\n", flowchart_size, swarm_size, i);
-
+        pga_process(flowchartGroup, machineGroup, i);
     }
+
+    handle_result();
+
+    free(all_flowchartGroup);
+    free(flowchartGroup);
+    free(machineGroup);
 
     return 0;
 }
