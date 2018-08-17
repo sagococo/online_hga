@@ -5,10 +5,23 @@
 #ifndef ONLINEHGA_STRUCTURE_H
 #define ONLINEHGA_STRUCTURE_H
 
-#define MAX_ACTIVITY 30
-#define MAX_FLOWCHART_SIZE 30
-#define MAX_MACHINE_NUMBER 20
-#define MACHINE_NUMBER 10
+//constants
+#define MAX_ACTIVITY 30 //工作流中活动的最大数量
+#define MAX_SWARM_SIZE 1300 //群体中染色体的最大数量
+#define MAX_MACHINE_NUMBER 30 //机器的最大数量
+#define MACHINE_NUMBER 10 //机器的数量
+#define MAX_FLOWCHART_SIZE 30 //工作流的最大数量
+#define GEN 50 //进化的代数
+#define HEURISTIC_NUMBER 5 //使用到的启发方法的数量
+#define STAGE_INTERVAL 200 //每个阶段的持续时间
+
+
+#define INF 9999999 //定义无穷大的数值
+#define MUTATION_RATE 0.008 //表示突变的概率
+#define OFFSPRING_KEEP_RATE 0.2 //子代中保留的概率
+
+#define RENEWABLE_NUMBER 500 //可重新使用资源的数量
+#define NONRENEWABLE_NUMBER 1200 //不可重新使用资源的数量
 
 //边的大小范围
 #define EDGE_UPPER 5000 //
@@ -85,6 +98,29 @@ struct machine {
 
 struct machine_group {
     struct machine machines[MAX_MACHINE_NUMBER]; //表示一个机器组
+};
+
+struct individual {
+    int modes[MAX_FLOWCHART_SIZE][MAX_ACTIVITY]; //模式染色体
+    int heuristic[MAX_ACTIVITY * MAX_FLOWCHART_SIZE]; //启发算法染色体
+    int makespan;
+    int total_makespan;
+    int total_delay;
+    int cost;
+
+    int flowchart_size;
+    int activity_size;
+};
+
+struct swarm_group {
+    int activity_size;
+    int flowchart_size;
+    struct individual individuals[MAX_SWARM_SIZE];
+};
+
+struct activity_set {
+    int length;
+    struct activity queue[MAX_ACTIVITY * MAX_FLOWCHART_SIZE];
 };
 
 #endif //ONLINEHGA_STRUCTURE_H
