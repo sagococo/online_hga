@@ -35,6 +35,8 @@ int main(int argc, char * argv[]) {
         printf("hga (%d, %d, %d)\n", flowchart_size, swarm_size, i);
         hga_process(flowchartGroup, machineGroup, i);
 
+        printf("pga (%d, %d, %d)\n", flowchart_size, swarm_size, i);
+
     }
 
     return 0;

@@ -17,7 +17,13 @@ extern int available;
 extern int print_travers;
 extern int print_simulation;
 
-void hga_process(struct flowchart_group * flowchartGroup, struct machine_group * machineGroup, int time){
+void hga_process(struct flowchart_group * flowchartGroup_ori, struct machine_group * machineGroup_ori, int time){
+    struct flowchart_group * flowchartGroup = malloc(sizeof(struct flowchart_group));
+    struct machine_group * machineGroup = malloc(sizeof(struct machine_group));
+
+    *flowchartGroup = *flowchartGroup_ori;
+    *machineGroup = *machineGroup_ori;
+
     struct activity_set * remain = malloc(sizeof(struct activity_set));
     remain->length = 0;
 
