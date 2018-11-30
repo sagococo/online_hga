@@ -5,7 +5,7 @@
 #include "pga.h"
 #include "tools.h"
 
-int datas = 20;
+int datas = 100;
 int flowchart_size = 15;
 int swarm_size = 1000;
 int stage_interval = 200;
@@ -15,12 +15,16 @@ int available = 500;
 int print_travers = 0;
 int print_simulation = 0;
 
+int seed = 135;
+
 int main(int argc, char * argv[]) {
-//        flowchart_size = strtol(argv[1], NULL, 10);
+        flowchart_size = strtol(argv[1], NULL, 10);
 //        swarm_size = strtol(argv[2], NULL, 10);
 
-    flowchart_size = 10;
-    swarm_size = 1000;
+//    flowchart_size = 15;
+//    swarm_size = 1000;
+
+    srand(seed);
 
     struct machine_group * machineGroup = malloc(sizeof(struct machine_group));
     initialize_machine(machineGroup);

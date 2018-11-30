@@ -62,6 +62,9 @@ void pga_process(struct flowchart_group * flowchartGroup_ori, struct machine_gro
             break;
         }
     }
+
+    free(flowchartGroup);
+    free(machineGroup);
 }
 
 void pga_find_best(int start, int end, struct activity_set * remain, struct flowchart_group * arrivals, struct flowchart_group * flowchartGroup, struct machine_group * machineGroup, struct individual * best, int timed){
@@ -492,7 +495,7 @@ void pga_simulation(int start, int end, struct activity_set * remain, struct flo
 
         time = min;
 
-        if (time >= end){
+        if (time > end){
             return;
         }
 

@@ -44,9 +44,6 @@ void handle_result(){
 
         fclose(hga_file);
         fclose(pga_file);
-
-        remove(hga_file_name);
-        remove(pga_file_name);
     }
 
     char * hga_filename = malloc(50);

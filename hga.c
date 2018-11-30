@@ -62,6 +62,9 @@ void hga_process(struct flowchart_group * flowchartGroup_ori, struct machine_gro
             break;
         }
     }
+
+    free(flowchartGroup);
+    free(machineGroup);
 }
 
 
@@ -337,17 +340,17 @@ struct activity hga_find_prior(struct activity_set * set, struct individual indi
     int heuristic = indiv.heuristic[count];
     switch (heuristic){
         case 1:
-            return min_sk(set);
-        case 2:
-            return min_lft(set);
-        case 3:
-            return min_spt(set);
-        case 4:
             return min_eft(set);
-        case 5:
-            return min_lst(set);
-        case 6:
+        case 2:
             return min_est(set);
+        case 3:
+            return min_lst(set);
+        case 4:
+            return min_lft(set);
+        case 5:
+            return min_spt(set);
+        case 6:
+            return min_sk(set);
     }
     return min_sk(set);
 }
@@ -409,7 +412,7 @@ void hga_simulation(int start, int end, struct activity_set * remain, struct flo
 
         time = min;
 
-        if (time >= end){
+        if (time > end){
             return;
         }
 

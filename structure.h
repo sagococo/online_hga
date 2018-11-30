@@ -11,8 +11,8 @@
 #define MAX_MACHINE_NUMBER 30 //机器的最大数量
 #define MACHINE_NUMBER 10 //机器的数量
 #define MAX_FLOWCHART_SIZE 30 //工作流的最大数量
-#define GEN 50 //进化的代数
-#define HEURISTIC_NUMBER 5 //使用到的启发方法的数量
+#define GEN 100 //进化的代数
+#define HEURISTIC_NUMBER 6 //使用到的启发方法的数量
 #define STAGE_INTERVAL 200 //每个阶段的持续时间
 
 
